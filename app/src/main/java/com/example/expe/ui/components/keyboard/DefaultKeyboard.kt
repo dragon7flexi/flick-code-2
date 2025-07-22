@@ -1,13 +1,14 @@
 import androidx.compose.runtime.Composable
 import com.example.expe.ui.components.keyboard.buttons.CursorToLineEndBtn
 import com.example.expe.ui.components.keyboard.buttons.CursorToLineStartBtn
+import com.example.expe.ui.components.keyboard.buttons.UnIndentBtn
 import com.example.expe.ui.components.keyboard.layout.KeyboardRow
 import com.example.expe.usecase.EditorController
 
 @Composable
 fun DefaultKeyboard(editorController: EditorController) {
     KeyboardRow { // Row-1
-        KeyBtn() // unIndent
+        UnIndentBtn { editorController.unIndent() }
         CursorToLineStartBtn { editorController.cursorToLineStart() }
         CopyAllBtn { editorController.copyAll() }
         CursorToLineEndBtn { editorController.cursorToLineEnd() }
