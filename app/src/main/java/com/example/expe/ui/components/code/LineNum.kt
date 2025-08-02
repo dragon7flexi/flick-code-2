@@ -1,6 +1,6 @@
 package com.example.expe.ui.components.code
 
-import FontOf
+import com.example.expe.ui.config.FontOf
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

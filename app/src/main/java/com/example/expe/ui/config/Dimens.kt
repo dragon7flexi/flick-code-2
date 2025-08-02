@@ -8,7 +8,7 @@ object Dimens {
     val LineHeight = 26.dp
     val LineNumWidth = 35.dp
     val LineNumFontSize = 18.sp
-    val CodeFontSize = 14.sp
+    val CodeFontSize = 15.sp
 
     // KeyBoard
     const val KEYBOARD_HEIGHT_RATIO = 0.85f

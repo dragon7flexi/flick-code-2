@@ -69,7 +69,7 @@ class CodeEditor(
     fun unIndent() {
         if (cursor.isAtLineStart()) return
 
-        val delCnt = minOf(4, cursor.row)
+        val delCnt = minOf(4, cursor.col)
         val newLine = code[cursor.row].removeRange(cursor.col - delCnt, cursor.col)
         codeViewModel.updateLine(cursor.row, newLine)
         cursorViewModel.update(cursor.row, cursor.col - delCnt)

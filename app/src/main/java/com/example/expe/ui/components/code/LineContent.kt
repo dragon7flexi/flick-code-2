@@ -9,6 +9,7 @@ import com.example.expe.model.Token
 import com.example.expe.model.TokenType
 import com.example.expe.ui.config.ColorOf
 import com.example.expe.ui.config.Dimens
+import com.example.expe.ui.config.FontOf
 
 @Composable
 fun LineContent(tokens: List<Token>) {
