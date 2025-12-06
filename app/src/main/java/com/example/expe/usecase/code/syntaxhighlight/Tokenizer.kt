@@ -4,8 +4,11 @@ import com.example.expe.model.Token
 import com.example.expe.model.TokenType
 
 class Tokenizer {
-    private val keywordBlue = setOf("class", "def", "in", "False", "True", "and", "or", "None", "pass")
-    private val keywordGreen = setOf("int", "str", "List", "range", "bool", "dict", "float")
+    private val keywordBlue = setOf("class", "def", "in", "False", "True", "and", "or", "None", "pass", "not", "on", "desc", "distinct")
+    private val keywordGreen = setOf(
+        "int", "str", "List", "range", "bool", "dict", "float",
+        "select", "join", "where", "case", "when", "order", "by", "having", "like", "between", "group"
+    )
     private val keywordPink = setOf("for", "if", "else", "elif", "return", "while", "match", "case", "break", "continue", "from", "import")
     private val brackets = setOf('(', ')', '[', ']', '{', '}')
     private val operators = setOf('+', '-', '*', '/', '%', '=', '>', '<', '!', '&', '|', '^', ':', ';', '.', ',')
@@ -25,6 +28,7 @@ class Tokenizer {
                 text.matches(Regex("""^\d+(\.\d+)?$""")) -> TokenType.Number
                 text.length == 1 && text[0] in brackets -> TokenType.Bracket
                 text.length == 1 && text[0] in operators -> TokenType.Operator
+                text.matches(Regex("^[A-Z][a-zA-Z0-9_]*$")) -> TokenType.ClassName
                 text.matches(Regex("""^[a-zA-Z_][a-zA-Z0-9_]*$""")) && line.contains("$text(") -> TokenType.Function
                 else -> TokenType.Others
             }

@@ -63,7 +63,9 @@ class CodeEditor(
     }
 
     fun indent() {
-
+        val newLine = code[cursor.row].insertAt(cursor.col, "    ")
+        codeViewModel.updateLine(cursor.row, newLine)
+        cursorViewModel.update(cursor.row, cursor.col + 4)
     }
 
     fun unIndent() {
@@ -73,5 +75,16 @@ class CodeEditor(
         val newLine = code[cursor.row].removeRange(cursor.col - delCnt, cursor.col)
         codeViewModel.updateLine(cursor.row, newLine)
         cursorViewModel.update(cursor.row, cursor.col - delCnt)
+    }
+
+    fun delLine() {
+        if (cursor.isAtFirstLine()) {
+            codeViewModel.updateLine(cursor.row, "")
+            cursorViewModel.update(cursor.row, 0)
+            return
+        }
+
+        codeViewModel.deleteLine(cursor.row)
+        cursorViewModel.update(cursor.row - 1, 0)
     }
 }

@@ -1,8 +1,10 @@
 package com.example.expe.ui.components
 
+import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavController
 import com.example.expe.data.CodeRepository
 import com.example.expe.ui.components.code.Code
 import com.example.expe.ui.components.keyboard.KeyBoard
@@ -22,13 +24,15 @@ import dpToPx
 import getCharWidthPx
 
 @Composable
-fun HomeScreenContent() {
-    val context = LocalContext.current
-    val codeRepository = remember(context) { CodeRepository(context) }
-    val codeViewModel = remember { CodeViewModel(codeRepository) }
+fun HomeScreenContent(
+    navController: NavController,
+    context: Context,
+    codeViewModel: CodeViewModel,
+) {
+
     val cursorViewModel = remember { CursorViewModel() }
     val shiftViewModel = remember { ShiftViewModel() }
-    val editorController = createEditorController(context, codeViewModel, cursorViewModel, shiftViewModel)
+    val editorController = createEditorController(context, codeViewModel, cursorViewModel, shiftViewModel, navController)
 
     val code = codeViewModel.code
     val cursor = cursorViewModel.cursor

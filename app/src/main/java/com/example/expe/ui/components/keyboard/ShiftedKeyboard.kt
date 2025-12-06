@@ -1,4 +1,5 @@
 import androidx.compose.runtime.Composable
+import com.example.expe.ui.components.keyboard.buttons.DelLineBtn
 import com.example.expe.ui.components.keyboard.layout.KeyboardRow
 import com.example.expe.usecase.EditorController
 
@@ -6,7 +7,7 @@ import com.example.expe.usecase.EditorController
 fun ShiftedKeyboard(editorController: EditorController) {
     KeyboardRow { // Row-1
         KeyBtn()
-        KeyBtn()
+        DelLineBtn { editorController.delLine() }
         CopyAllBtn { editorController.copyAll() }
         PasteBtn { editorController.paste() }
         CutAllBtn { editorController.cutAll() }
@@ -33,7 +34,7 @@ fun ShiftedKeyboard(editorController: EditorController) {
         SpaceBtn { editorController.space() }
     }
     KeyboardRow { // Row-5
-        KeyBtn() // FlickBtn
+        GoToCodeTestBtn { editorController.goToCodeTest() }
         FlickBtn(':', '=', ',', ';', '0') { char -> editorController.type(char) }
         ShiftBtn { editorController.toggleShift() }
         FlickBtn('\"', '<', '.', '>', '*') { char -> editorController.type(char) }

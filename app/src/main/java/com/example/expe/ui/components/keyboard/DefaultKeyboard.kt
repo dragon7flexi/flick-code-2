@@ -1,6 +1,7 @@
 import androidx.compose.runtime.Composable
 import com.example.expe.ui.components.keyboard.buttons.CursorToLineEndBtn
 import com.example.expe.ui.components.keyboard.buttons.CursorToLineStartBtn
+import com.example.expe.ui.components.keyboard.buttons.IndentBtn
 import com.example.expe.ui.components.keyboard.buttons.UnIndentBtn
 import com.example.expe.ui.components.keyboard.layout.KeyboardRow
 import com.example.expe.usecase.EditorController
@@ -12,7 +13,7 @@ fun DefaultKeyboard(editorController: EditorController) {
         CursorToLineStartBtn { editorController.cursorToLineStart() }
         CopyAllBtn { editorController.copyAll() }
         CursorToLineEndBtn { editorController.cursorToLineEnd() }
-        KeyBtn()
+        IndentBtn { editorController.indent() }
     }
     KeyboardRow { // Row-2
         CursorUpBtn { editorController.cursorUp() }
@@ -36,7 +37,7 @@ fun DefaultKeyboard(editorController: EditorController) {
         SpaceBtn { editorController.space() }
     }
     KeyboardRow { // Row-5
-        KeyBtn()
+        FlickBtn('@', '&', '%', '|', '#') { char -> editorController.type(char) }
         FlickBtn(':', '=', ',', ';', '0') { char -> editorController.type(char) }
         ShiftBtn { editorController.toggleShift() }
         FlickBtn('\"', '<', '.', '>', '*') { char -> editorController.type(char) }

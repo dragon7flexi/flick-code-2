@@ -1,5 +1,7 @@
 package com.example.expe.usecase
 
+import androidx.navigation.NavController
+import com.example.expe.ui.screen.navigation.Routes
 import com.example.expe.usecase.clipboard.Clipboard
 import com.example.expe.usecase.code.CodeEditor
 import com.example.expe.usecase.cursor.CursorNavigator
@@ -13,6 +15,7 @@ interface EditorController {
     fun backspace()
     fun indent()
     fun unIndent()
+    fun delLine()
 
     // Cursor movement
     fun cursorUp()
@@ -31,6 +34,9 @@ interface EditorController {
 
     // Shift
     fun toggleShift()
+
+    // Code test
+    fun goToCodeTest()
 }
 
 class EditorControllerImpl(
@@ -38,6 +44,7 @@ class EditorControllerImpl(
     private val cursorNavigator: CursorNavigator,
     private val clipboard: Clipboard,
     private val shiftViewModel: ShiftViewModel,
+    private val navController: NavController,
 ): EditorController {
     override fun type(char: Char) {
         codeEditor.type(char)
@@ -61,6 +68,10 @@ class EditorControllerImpl(
 
     override fun unIndent() {
         codeEditor.unIndent()
+    }
+
+    override fun delLine() {
+        codeEditor.delLine()
     }
 
     override fun cursorUp() {
@@ -109,5 +120,9 @@ class EditorControllerImpl(
 
     override fun toggleShift() {
         shiftViewModel.toggle()
+    }
+
+    override fun goToCodeTest() {
+        navController.navigate(Routes.CODE_TEST)
     }
 }

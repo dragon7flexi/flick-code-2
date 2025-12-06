@@ -2,11 +2,15 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+
+    id("com.chaquo.python") version "14.0.2"
 }
 
 android {
     namespace = "com.example.expe"
     compileSdk = 35
+
+    ndkVersion = "26.1.10909125"
 
     defaultConfig {
         applicationId = "com.example.expe"
@@ -16,6 +20,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86", "x86_64")
+        }
     }
 
     buildTypes {
@@ -73,4 +81,7 @@ dependencies {
     // Debug tools
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Screen navigation
+    implementation("androidx.navigation:navigation-compose:2.8.0")
 }

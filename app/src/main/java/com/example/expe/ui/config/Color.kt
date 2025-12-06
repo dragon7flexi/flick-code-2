@@ -6,9 +6,10 @@ object CustomColor {
     val HardGray = Color(20, 20, 20)
     val MiddleGray = Color(100, 100, 100)
     val SoftGray = Color(150, 150, 150)
-    val TranslucentGray = Color(50, 50, 50, 110)
+    val TranslucentGray = Color(50, 50, 50, 60)
     val LightGreen = Color(144, 238, 144)
     val LightGreenLighter = Color(199, 246, 199)
+    val GreenBlue = Color(50, 210, 190)
     val LightBlue = Color(150, 223, 255)
     val Blue = Color(66, 147, 245)
     val Purple = Color(192, 132, 255)
@@ -34,5 +35,6 @@ object ColorOf {
     val Operator = CustomColor.Orange
     val Str = CustomColor.Red
     val Bracket = CustomColor.Yellow
+    val ClassName = CustomColor.GreenBlue
     val Others = CustomColor.LightBlue
 }

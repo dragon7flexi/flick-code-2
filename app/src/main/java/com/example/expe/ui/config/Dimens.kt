@@ -5,10 +5,10 @@ import androidx.compose.ui.unit.sp
 
 object Dimens {
     // CodeView
-    val LineHeight = 26.dp
+    val LineHeight = 23.dp
     val LineNumWidth = 35.dp
-    val LineNumFontSize = 18.sp
-    val CodeFontSize = 15.sp
+    val LineNumFontSize = 19.sp
+    val CodeFontSize = 16.sp
 
     // KeyBoard
     const val KEYBOARD_HEIGHT_RATIO = 0.85f

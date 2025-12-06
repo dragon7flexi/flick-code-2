@@ -14,5 +14,6 @@ enum class TokenType {
     Function,
     Bracket,
     Operator,
+    ClassName,
     Others,
 }
