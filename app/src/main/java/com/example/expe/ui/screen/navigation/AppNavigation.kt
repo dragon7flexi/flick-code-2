@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
 import com.example.expe.data.CodeRepository
+import com.example.expe.logic.ClipboardService
 import com.example.expe.viewmodel.CodeViewModel
 import com.example.expe.viewmodel.StdinViewModel
 
@@ -27,11 +28,13 @@ fun AppNavigation() {
 
     val stdinViewModel = remember { StdinViewModel() }
 
+    val clipboardService = ClipboardService(context)
+
     NavHost(
         navController = navController,
         startDestination = "home"
     ) {
-        composable(Routes.HOME) { HomeScreen(navController, context, codeViewModel) }
-        composable(Routes.CODE_TEST) { CodeTestScreen(navController, codeViewModel, stdinViewModel) }
+        composable(Routes.HOME) { HomeScreen(navController, context, codeViewModel, clipboardService) }
+        composable(Routes.CODE_TEST) { CodeTestScreen(navController, codeViewModel, stdinViewModel, clipboardService) }
     }
 }

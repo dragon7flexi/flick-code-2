@@ -6,6 +6,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import com.example.expe.data.CodeRepository
+import com.example.expe.logic.ClipboardService
 import com.example.expe.ui.components.code.Code
 import com.example.expe.ui.components.keyboard.KeyBoard
 import com.example.expe.ui.components.cursor.Cursor
@@ -26,13 +27,12 @@ import getCharWidthPx
 @Composable
 fun HomeScreenContent(
     navController: NavController,
-    context: Context,
     codeViewModel: CodeViewModel,
+    clipboardService: ClipboardService,
 ) {
-
     val cursorViewModel = remember { CursorViewModel() }
     val shiftViewModel = remember { ShiftViewModel() }
-    val editorController = createEditorController(context, codeViewModel, cursorViewModel, shiftViewModel, navController)
+    val editorController = createEditorController(codeViewModel, cursorViewModel, shiftViewModel, navController, clipboardService)
 
     val code = codeViewModel.code
     val cursor = cursorViewModel.cursor

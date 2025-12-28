@@ -1,6 +1,7 @@
 import json
 from io import StringIO
 import sys
+import traceback
 
 def run_code(code, stdin_text):
     sys.stdin = StringIO(stdin_text)
@@ -15,8 +16,8 @@ def run_code(code, stdin_text):
 
     try:
         exec(code, {})
-    except Exception as e:
-        print(e, file=sys.stderr)
+    except Exception:
+        traceback.print_exc(file=sys.stderr)
     finally:
         sys.stdout = old_stdout
         sys.stderr = old_stderr

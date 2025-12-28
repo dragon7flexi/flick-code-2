@@ -12,16 +12,15 @@ import com.example.expe.viewmodel.CodeViewModel
 import com.example.expe.viewmodel.CursorViewModel
 
 fun createEditorController(
-    context: Context,
     codeViewModel: CodeViewModel,
     cursorViewModel: CursorViewModel,
     shiftViewModel: ShiftViewModel,
     navController: NavController,
+    clipboardService: ClipboardService,
 ): EditorController {
     val indenter = Indenter()
     val codeEditor = CodeEditor(codeViewModel, cursorViewModel, indenter, shiftViewModel)
     val cursorNavigator = CursorNavigator(cursorViewModel, codeViewModel)
-    val clipboardService = ClipboardService(context)
     val clipboard = Clipboard(codeViewModel, clipboardService, cursorViewModel)
 
     return EditorControllerImpl(
