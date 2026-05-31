@@ -16,6 +16,7 @@ class Tokenizer {
 
     fun tokenizeLine(line: String): List<Token> {
         val tokens = mutableListOf<Token>()
+        var prevToken: Token? = null
 
         for (match in regex.findAll(line)) {
             val text = match.value
@@ -28,12 +29,19 @@ class Tokenizer {
                 text.matches(Regex("""^\d+(\.\d+)?$""")) -> TokenType.Number
                 text.length == 1 && text[0] in brackets -> TokenType.Bracket
                 text.length == 1 && text[0] in operators -> TokenType.Operator
+
                 text.matches(Regex("^[A-Z][a-zA-Z0-9_]*$")) -> TokenType.ClassName
                 text.matches(Regex("""^[a-zA-Z_][a-zA-Z0-9_]*$""")) && line.contains("$text(") -> TokenType.Function
+
+                prevToken?.text == "." &&
+                        text.matches(Regex("""^[a-zA-Z_][a-zA-Z0-9_]*$""")) -> TokenType.Member
+
                 else -> TokenType.Others
             }
 
-            tokens.add(Token(type, text))
+            val token = Token(type, text)
+            tokens.add(token)
+            prevToken = token
         }
 
         return tokens

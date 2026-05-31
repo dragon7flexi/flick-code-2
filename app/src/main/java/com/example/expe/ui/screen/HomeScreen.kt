@@ -10,13 +10,14 @@ import com.example.expe.logic.ClipboardService
 import com.example.expe.ui.components.HomeScreenContent
 import com.example.expe.ui.config.ColorOf
 import com.example.expe.viewmodel.CodeViewModel
+import com.example.expe.viewmodel.CursorViewModel
 
 @Composable
 fun HomeScreen(
     navController: NavController,
-    context: Context,
     codeViewModel: CodeViewModel,
     clipboardService: ClipboardService,
+    cursorViewModel: CursorViewModel,
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -24,7 +25,7 @@ fun HomeScreen(
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
             // innerPadding ensures content does not overlap with the system bars.
-            HomeScreenContent(navController, codeViewModel, clipboardService)
+            HomeScreenContent(navController, codeViewModel, clipboardService, cursorViewModel)
         }
     }
 }

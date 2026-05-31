@@ -16,4 +16,5 @@ enum class TokenType {
     Operator,
     ClassName,
     Others,
+    Member,
 }

@@ -29,8 +29,9 @@ fun HomeScreenContent(
     navController: NavController,
     codeViewModel: CodeViewModel,
     clipboardService: ClipboardService,
+    cursorViewModel: CursorViewModel,
 ) {
-    val cursorViewModel = remember { CursorViewModel() }
+//    val cursorViewModel = remember { CursorViewModel() }
     val shiftViewModel = remember { ShiftViewModel() }
     val editorController = createEditorController(codeViewModel, cursorViewModel, shiftViewModel, navController, clipboardService)
 

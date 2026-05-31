@@ -37,4 +37,5 @@ object ColorOf {
     val Bracket = CustomColor.Yellow
     val ClassName = CustomColor.GreenBlue
     val Others = CustomColor.LightBlue
+    val Member = Color.White
 }

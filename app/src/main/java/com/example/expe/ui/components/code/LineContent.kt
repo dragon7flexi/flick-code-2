@@ -26,6 +26,7 @@ fun LineContent(tokens: List<Token>) {
                 TokenType.Bracket -> ColorOf.Bracket
                 TokenType.ClassName -> ColorOf.ClassName
                 TokenType.Others -> ColorOf.Others
+                TokenType.Member -> ColorOf.Member
             }
             withStyle(style = SpanStyle(color = color, fontFamily = FontOf.Code)) {
                 append(token.text)
